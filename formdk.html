@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./css/dk.css">
+
+</head>
+<body>
+  <div class="signup" style="margin-top: 50px; margin-bottom: 80px;">
+    <div class="signup__container">
+      <h1>Đăng Ký</h1>
+      <form>
+        <h5>Email</h5>
+        <input type="text" class="input-signup-username" />
+        <h5>Password</h5>
+        <input type="password" class="input-signup-password" />
+        <h5>Nhập lại password</h5>
+        <input type="password" class="input-signup-cofirmpassword">
+        <h5>Họ Tên</h5>
+        <input type="text" class="input-signup-hoten">
+        <h5>Ngày Tham Gia</h5>
+        <input type="date" class="input-signup-ngayTG" >
+        <h5>Số Điện Thoại</h5>
+        <input type="text" class="input-signup-sdt">
+        <button type="submit" class="signup__signInButton">Đăng Ký</button>
+      </form>
+      <a href="./login.html" class="signup__registerButton"
+        >Đăng nhập</a
+      >
+    </div>
+  </div>
+<script src="./js/jquery-3.7.1.js"></script>
+<script src="./js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const inputUsernameRegister = document.querySelector(".input-signup-username");
+  const inputPasswordRegister = document.querySelector(".input-signup-password");
+  const inputConfirmPassword = document.querySelector(".input-signup-cofirmpassword");
+  const inputHoTen = document.querySelector(".input-signup-hoten");
+  const inputNgayThamGia = document.querySelector(".input-signup-ngayTG");
+  const inputSDT = document.querySelector(".input-signup-sdt");
+  const btnRegister = document.querySelector(".signup__signInButton");
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
+  const validatePhoneNumber = (phoneNumber) => {
+    const phoneNumberRegex = /^0[0-9]{3}[0-9]{3}[0-9]{3}$/;
+    return phoneNumberRegex.test(phoneNumber);
+  };
+
+  const isEmpty = (value) => {
+    return value.trim() === '';
+  };
+
+
+  const removeErrorMessages = () => {
+    document.querySelectorAll('.error-message').forEach(element => {
+      element.remove();
+    });
+  };
+
+  const displayErrorMessage = (inputElement, errorMessage) => {
+    const errorElement = document.createElement('p');
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add('error-message');
+    inputElement.insertAdjacentElement('afterend', errorElement);
+  };
+
+  const validateInput = () => {
+    removeErrorMessages();
+
+    let isValid = true;
+
+    if (!validateEmail(inputUsernameRegister.value)) {
+      displayErrorMessage(inputUsernameRegister, "Email theo mẫu xxxxx@gmail.com kí tự đầu dùng chữ, đúng định dạng");
+      isValid = false;
+    }
+
+    if (!validatePassword(inputPasswordRegister.value)) {
+      displayErrorMessage(inputPasswordRegister, "Password phải chứa ít nhất 8 ký tự, bao gồm ít nhất một chữ cái viết thường, một chữ cái viết hoa và một số");
+      isValid = false;
+    }
+
+    if (inputPasswordRegister.value !== inputConfirmPassword.value) {
+      displayErrorMessage(inputConfirmPassword, "Mật khẩu nhập lại không khớp");
+      isValid = false;
+    }
+
+    if (!/^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/.test(inputHoTen.value)) {
+      displayErrorMessage(inputHoTen, "Họ Tên: Chỉ dùng chữ hoa đầu từ không dùng số không rỗng");
+      isValid = false;
+    }
+
+    const currentDate = new Date();
+    const inputDate = new Date(inputNgayThamGia.value);
+    const diffTime = Math.abs(currentDate - inputDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 30) {
+      displayErrorMessage(inputNgayThamGia, "Ngày tham gia phải sau ngày hôm nay ít nhất 30 ngày");
+      isValid = false;
+    }
+
+    if (!validatePhoneNumber(inputSDT.value)) {
+      displayErrorMessage(inputSDT, "Số điện thoại phải đúng định dạng 0xxx-xxx-xxx");
+      isValid = false;
+    }
+
+    return isValid;
+  };
+
+  inputUsernameRegister.addEventListener("blur", validateInput);
+  inputPasswordRegister.addEventListener("blur", validateInput);
+  inputConfirmPassword.addEventListener("blur", validateInput);
+  inputHoTen.addEventListener("blur", validateInput);
+  inputNgayThamGia.addEventListener("blur", validateInput);
+  inputSDT.addEventListener("blur", validateInput);
+
+  btnRegister.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (validateInput()) {
+      const user = {
+        username: inputUsernameRegister.value,
+        password: inputPasswordRegister.value,
+        hoTen: inputHoTen.value,
+        ngayThamGia: inputNgayThamGia.value,
+        sdt: inputSDT.value
+      };
+      const json = JSON.stringify(user);
+      localStorage.setItem("loggedInUser", json);
+      alert("Đăng Ký Thành Công");
+      window.location.href = "login.html";
+    } else {
+      return;
+    }
+  });
+</script>
+
+</body>
+</html>

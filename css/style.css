@@ -1,0 +1,397 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-padding-top: 2rem;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    line-height: 1;
+}
+
+img {
+    width: 100%
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+    transition: 0.5 linear;
+    background-color: #38adae;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    column-gap: 0.2rem;
+    color: #fff;
+}
+
+.logo.bx {
+    font-size: 24px;
+    color: #fff;
+}
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #02171d;
+    border-radius: 5rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: #02171d;
+    border-radius: 5rem;
+}
+
+.navbar {
+    display: flex;
+    column-gap: 2.4rem;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color:#fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.navbar a:hover {
+    background-color: #ffffff;
+    color: #38adae;
+    padding: 3px 3px;
+    border: 2px solid #333;
+    border-radius: 20px; 
+    text-decoration: none;
+    transition: all 0.1s ease;
+}
+
+.header-icons {
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 100000;
+    color: #fff;
+}
+
+#menu-icon {
+    display: none;
+}
+
+.search-box {
+    position: absolute;
+    top: 110%;
+    right: -100%;
+}
+
+.search-box input {
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    width: 280px;
+    box-shadow: 2px 2px 10px 4px rgba(10, 39, 38, 0.15);
+}
+
+.search-box.active {
+    right: 1rem;
+    transition: 0.2s;
+
+}
+
+.cart {
+    position: absolute;
+    top: 110%;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.5rem;
+    background: #fff;
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 10px 4px rgba(10, 39, 38, 0.15);
+}
+
+.cart img {
+    width: 100px;
+
+}
+
+.cart .box {
+    display: flex;
+    align-items: center;
+    column-gap: 2rem;
+}
+
+.btn {
+    padding: 0.7rem 1.2rem;
+    background: #df4f4f;
+    color: #fff;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #0885a7;
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+.cart .box .text h3 {
+    font-size: 1rem;
+}
+
+.cart .box .bx {
+    font-size: 24px;
+}
+
+.cart .box .bx:hover {
+    font-size: 24px;
+}
+
+.cart h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.cart.active {
+    right: 1rem;
+}
+
+.user {
+    position: absolute;
+    right: -100%;
+    top: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.5rem;
+    background: #fff;
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 10px 4px rgba(10, 39, 38, 0.15);
+}
+
+.user h2 {
+    font-size: 1.2rem;
+    color: #02171d;
+}
+
+.user .login-btn {
+    background: #df4f4f;
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.user .login-btn:hover {
+    background: #0885a7;
+}
+
+.user input {
+    border: none;
+    outline: none;
+    background: #fff;
+    padding: 10px;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.user p {
+    font-size: 0.937rem;
+    color: #f63e14;
+}
+
+.user.active {
+    right: 1rem;
+    transition: 0.2s;
+}
+
+#menu-icon,#search-icon,#cart-icon,#user-icon{
+    font-size: 36px;
+}
+
+.home {
+    margin-top: 80px;
+    text-align: center;
+}
+.card-img-top:hover{
+    transform: scale(1.1);
+}
+.heading {
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+}
+
+.heading h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #02171d;
+    font-weight: bold;
+}
+
+.heading span {
+    padding: 0.2rem 1.2rem;
+    background: #f63e14;
+    color: #fff;
+    font-weight: 500;
+    display: inline-block;
+    text-transform: uppercase;
+    clip-path: polygon(100% 0, 93% 50%, 86% 99%, 0% 100%, 7% 47%, 13% 0%);
+}
+
+.new {
+    padding: 40px;
+}
+
+.new-arival {
+    margin-top: 2rem;
+}
+
+.new-arival .box {
+    position: relative;
+    overflow: hidden;
+    background:#fff;
+}
+
+.new-arival .box-img {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.new-arival .box .content {
+    position: absolute;
+    top: -100%;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: hsl(0, 0%, 91%, 0.5);
+    overflow: hidden;
+}
+
+.new-arival .box:hover .content {
+    top: 0;
+    transition: 0.2s;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.product-container .pox {
+    position: relative;
+    padding: 10px;
+    box-shadow: 2px 2px 10px 4px rgba(10, 39, 38, 0.15);
+}
+
+.product-container .pox .content h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.product-container .pox .content .stars .bx {
+    color: #f63e14;
+}
+
+.product-container .pox .bx-cart {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 24px;
+    background: #f63e14;
+    color: #fff;
+
+}
+
+.product-container .pox .bx-cart:hover {
+    background: #02171d;
+
+}
+
+.product-container .pox:hover img {
+    transform: scale(1.1);
+}
+.content{
+    margin-top: 20px;
+}
+
+.payment {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.payment img {
+    width: 280px;
+}
+
+.hidden {
+    display: none;
+}
+
+.alert {
+    display: none;
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+
+.indam 
+{
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+    padding: 0px;
+    color: black;
+    line-height: 1.5;
+}
+
+.fa a
+{
+    font-size: 17px;
+    color: #333;
+    line-height: 1.5;
+}
+
+.scroll
+{
+    font-size: 30px;
+    text-align: center;
+}
+
+.scroll:hover 
+{
+    color: #0c1825;
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài Khoản</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-1jPdRMNua6J5JvihDQT8hVOvyGARbcQPJeH9/rzfV1yA1eGXVVcT5qcF5vJvFT7f" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo" style=" text-decoration:  none;font-size: 25px;font-style: italic;"><i class="bx bxs-star-half" style=" text-decoration:  none;"></i>Phone Store</a>
+        <ul class="navbar">
+            <li><a href="index.html">Trang Chủ</a></li>
+            <li><a href="index.html">Sản Phẩm Bán Chạy</a></li>
+            <li><a href="index.html">Sản Phẩm</a></li>
+            <li><a href="index.html">Liên Hệ</a></li>
+            <li><a href="index.html">SiteMap</a></li>
+        </ul>
+        <div class="header-icons">
+            
+            <i class='bx bx-menu' id="menu-icon" tabindex="0"></i>
+            <i class='bx bx-search' id="search-icon" tabindex="0"></i>
+            <i class='bx bx-user' id="user-icon" tabindex="0"></i>
+            <i class='bx bx-cart' id="cart-icon" tabindex="0"></i>
+        </div>
+
+        <div class="search-box">
+            <input type="search" name="" id="" placeholder="Search...">
+        </div>
+        <div class="cart">
+            <a href="" class="btn" id="thanhtoan">Thanh Toán</a>
+        </div>
+    </header>
+  <div class="account-info" style="margin-top: 80px;margin-left: 10px;">
+    <h1>Thông Tin Tài Khoản</h1>
+    <div class="user-info">
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Họ Tên:</strong> <span id="ho-ten"></span></p>
+      <p><strong>Ngày Tham Gia:</strong> <span id="ngay-tham-gia"></span></p>
+      <p><strong>Số Điện Thoại:</strong> <span id="so-dien-thoai"></span></p>
+    </div>
+  </div>
+
+<script>
+
+  const displayUserInfo = () => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      const user = JSON.parse(loggedInUser);
+      document.getElementById("email").textContent = user.username;
+      document.getElementById("ho-ten").textContent = user.hoTen;
+      document.getElementById("ngay-tham-gia").textContent = user.ngayThamGia;
+      document.getElementById("so-dien-thoai").textContent = user.sdt;
+    }
+  };
+
+  window.onload = displayUserInfo;
+</script>
+<script src="./js/event.js"></script>
+</body>
+</html>
